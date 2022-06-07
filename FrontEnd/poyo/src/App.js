@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import loadable from "@loadable/component";
+import "./styles/globals.css";
 
 const Main = loadable(() => import("./pages/Main"));
 const Detail = loadable(() => import("./pages/Detail"));
