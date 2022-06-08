@@ -1,13 +1,36 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS } from "../../constants";
 import PopularSearch from "./PopularSearch";
 
-export default function Search() {
+export default function SearchInput() {
+  const navigate = useNavigate();
+
+  const [search, setSearch] = useState("");
+
+  const onChangeSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${search}`, { state: search });
+  };
+
   return (
     <>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Label htmlFor="search">
-          <SearchInp id="search" type="text" placeholder="Search" />
+          <SearchInp
+            id="search"
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={onChangeSearch}
+          />
+          <button type="submit"></button>
         </Label>
       </Form>
       <PopularSearch />
@@ -30,6 +53,9 @@ const Label = styled.label`
     width: 1.5rem;
     height: 1.5rem;
     background: url("/img/search.svg") no-repeat center;
+  }
+  button {
+    display: none;
   }
 `;
 

@@ -5,7 +5,7 @@ export default function PopularSearch() {
   const dummy = [
     {
       id: 1,
-      word: "미스테리",
+      word: "미스테",
     },
     {
       id: 2,
@@ -47,7 +47,9 @@ export default function PopularSearch() {
         {dummy.map((v) => {
           return (
             <Word key={v.id}>
-              <p>{v.word}</p>
+              <p>
+                {v.id}. {v.word}
+              </p>
             </Word>
           );
         })}
