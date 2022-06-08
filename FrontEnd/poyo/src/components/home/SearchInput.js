@@ -5,31 +5,31 @@ import { COLORS } from "../../constants";
 import PopularSearch from "./PopularSearch";
 
 export default function SearchInput() {
+  const navigate = useNavigate();
 
-
-  const navigate = useNavigate()
-
-  const [search, setSearch] = useState("")
-
-
+  const [search, setSearch] = useState("");
 
   const onChangeSearch = (e) => {
-    e.preventDefault()
-    setSearch(e.target.value)
-  }
-
-  console.log(search);
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    navigate(`/search/${search}`, { state: search })
-  }
+    e.preventDefault();
+    navigate(`/search/${search}`, { state: search });
+  };
 
   return (
     <>
       <Form onSubmit={onSubmit}>
         <Label htmlFor="search">
-          <SearchInp id="search" type="text" placeholder="Search" value={search} onChange={onChangeSearch} />
+          <SearchInp
+            id="search"
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={onChangeSearch}
+          />
           <button type="submit"></button>
         </Label>
       </Form>
