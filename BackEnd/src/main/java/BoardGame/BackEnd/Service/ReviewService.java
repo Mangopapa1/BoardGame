@@ -1,6 +1,6 @@
 package BoardGame.BackEnd.Service;
 
-import BoardGame.BackEnd.DTO.ReviewDTO;
+import BoardGame.BackEnd.DTO.Review;
 import BoardGame.BackEnd.Repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,13 @@ public class ReviewService {
 
     //리뷰 등록
     @Transactional
-    public Long write(ReviewDTO review){
+    public Long write(Review review){
         reviewRepository.save(review);
         return review.getReviewId();
     }
 
     //전체 조회
-    public List<ReviewDTO> findReviews(){
+    public List<Review> findReviews(){
         return reviewRepository.findAll();
     }
 

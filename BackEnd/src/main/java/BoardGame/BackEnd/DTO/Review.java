@@ -1,14 +1,13 @@
 package BoardGame.BackEnd.DTO;
 
 import lombok.Data;
-import org.hibernate.annotations.Columns;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "review")
-public class ReviewDTO {
+public class Review {
     @Id
     @GeneratedValue
     @Column(name = "review_id")
@@ -31,6 +30,4 @@ public class ReviewDTO {
 
     @Column(name = "modified_date")
     private String modifiedDate;
-
-
 }

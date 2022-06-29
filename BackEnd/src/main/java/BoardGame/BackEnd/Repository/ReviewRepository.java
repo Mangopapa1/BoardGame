@@ -1,6 +1,6 @@
 package BoardGame.BackEnd.Repository;
 
-import BoardGame.BackEnd.DTO.ReviewDTO;
+import BoardGame.BackEnd.DTO.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,15 +13,15 @@ public class ReviewRepository {
 
     private final EntityManager em;
 
-    public void save(ReviewDTO review){
+    public void save(Review review){
         em.persist(review);
     }
 
-    public ReviewDTO findOne(Long reviewId){
-        return em.find(ReviewDTO.class, reviewId);
+    public Review findOne(Long reviewId){
+        return em.find(Review.class, reviewId);
     }
 
-    public List<ReviewDTO> findAll(){
-        return em.createQuery("select m from Review m", ReviewDTO.class).getResultList();
+    public List<Review> findAll(){
+        return em.createQuery("select m from Review m", Review.class).getResultList();
     }
 }

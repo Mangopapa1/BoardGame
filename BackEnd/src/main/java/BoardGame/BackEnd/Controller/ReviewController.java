@@ -24,4 +24,5 @@ public class ReviewController {
 //    public Long save(@PathVariable final Long id, @RequestBody final BoardRequestDto params) {
 //        return boardService.update(id, params);
 //    }
+    //
 }
