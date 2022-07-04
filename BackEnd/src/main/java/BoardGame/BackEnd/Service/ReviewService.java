@@ -1,6 +1,6 @@
 package BoardGame.BackEnd.Service;
 
-import BoardGame.BackEnd.DTO.Review;
+import BoardGame.BackEnd.Entity.Review;
 import BoardGame.BackEnd.Repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

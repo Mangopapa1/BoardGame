@@ -1,4 +1,4 @@
-package BoardGame.BackEnd.DTO;
+package BoardGame.BackEnd.Entity;
 
 import lombok.Data;
 
