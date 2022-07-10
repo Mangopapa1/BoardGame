@@ -1,6 +1,7 @@
 package BoardGame.BackEnd.Service;
 
 import BoardGame.BackEnd.Dto.ReviewDto;
+import BoardGame.BackEnd.Entity.BoardGame;
 import BoardGame.BackEnd.Entity.Review;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +36,7 @@ public interface ReviewService {
                 .reviewId(entity.getReviewId())
                 .memberId(entity.getMemberId())
                 .replyContent(entity.getReplyContent())
-                .boardGameId(entity.getBoardGameId())
+                .boardGameId(entity.getBoardgameId())
                 .createdDate(entity.getCreatedDate())
                 .modifiedDate(entity.getModifiedDate())
                 .build();
