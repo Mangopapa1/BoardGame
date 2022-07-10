@@ -1,12 +1,21 @@
-package BoardGame.BackEnd.DTO;
+package BoardGame.BackEnd.Entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+
+//@Entity
+//@Builder
+//@Data
+//@Table(name = "review")
 
 @Entity
-@Data
-@Table(name = "review")
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Review {
     @Id
     @GeneratedValue
@@ -19,15 +28,16 @@ public class Review {
     @Column(name = "member_id")
     private String memberId;
 
-    @Column(name = "boardgame_id")
-    private Long boardgameId;
+    @Column(name = "board_game_id")
+    private Long boardGameId;
 
     @Column(name = "reply_content")
     private String replyContent;
 
     @Column(name = "created_date")
-    private String createdDate;
+    private LocalDateTime createdDate;
 
     @Column(name = "modified_date")
-    private String modifiedDate;
+    private LocalDateTime modifiedDate;
+
 }
