@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,10 +20,10 @@ public class BoardGameService {
     }
 
     public List<BoardGame> findType(String type){
-        return boardGameRepository.findByTypeContaning(type);
+        return boardGameRepository.findByTypeStartingWith(type);
     }
 
     public List<BoardGame> findDifficulty(String difficulty){
-        return boardGameRepository.findByDifficultyContaning(difficulty);
+        return boardGameRepository.findByDifficultyStartingWith(difficulty);
     }
 }

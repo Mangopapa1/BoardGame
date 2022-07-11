@@ -1,7 +1,7 @@
 package BoardGame.BackEnd.Controller;
 
-import BoardGame.BackEnd.Domain.Dto.ReviewDto;
-import BoardGame.BackEnd.Domain.Entity.Review;
+
+import BoardGame.BackEnd.Dto.ReviewDto;
 import BoardGame.BackEnd.Service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
