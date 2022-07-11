@@ -14,9 +14,6 @@ public class BoardGameRepository {
 
     private final EntityManager em;
 
-    public void save(BoardGame boardGame) {
-        em.persist(boardGame);
-    }
 
     //보드게임 조회
     public BoardGame findByName(String name){
@@ -24,12 +21,12 @@ public class BoardGameRepository {
     }
 
     //장르별 조회
-    public List<BoardGame> findByTypeContaning(@PathVariable String type){
-        return em.createQuery("select m from BoardGame m where m.type like :type", BoardGame.class).getResultList();
+    public List<BoardGame> findByTypeStartingWith(String type) {
+        return null;
     }
 
     //난이도별 조회
-    public List<BoardGame> findByDifficultyContaning(@PathVariable String difficulty){
-        return em.createQuery("select m from BoardGame m where m.difficulty like :difficulty", BoardGame.class).getResultList();
+    public List<BoardGame> findByDifficultyStartingWith(String difficulty){
+        return em.createQuery("select m from BoardGame m where m.difficulty like %:"+difficulty+"%", BoardGame.class).getResultList();
     }
 }

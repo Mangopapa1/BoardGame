@@ -18,7 +18,7 @@ public class BoardGame {
     private String name;
 
     @Column
-    private String player;
+    private String players;
 
     @Column(name = "play_time")
     private String playTime;
