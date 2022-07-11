@@ -9,21 +9,25 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class BoardGameService {
 
     private final BoardGameRepository boardGameRepository;
 
+    public List<BoardGame> findType(){
+        return boardGameRepository.findType();
+    }
+
+    public List<BoardGame> findDifficulty(){
+        return boardGameRepository.findDifficulty();
+    }
+
     public BoardGame findOne(String name){
-        return boardGameRepository.findByName(name);
+        return boardGameRepository.findOne(name);
     }
 
-    public List<BoardGame> findType(String type){
-        return boardGameRepository.findByTypeStartingWith(type);
-    }
 
-    public List<BoardGame> findDifficulty(String difficulty){
-        return boardGameRepository.findByDifficultyStartingWith(difficulty);
-    }
+
+
 }
