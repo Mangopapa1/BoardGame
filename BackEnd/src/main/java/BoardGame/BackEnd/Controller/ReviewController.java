@@ -13,23 +13,23 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/review")
+@RequestMapping("/poyo")
 @Log4j2
 public class ReviewController {
     private final ReviewService service;
 
-    @PostMapping("")
-    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto) throws Exception {
-        return new ResponseEntity<>(service.insertReview(dto), HttpStatus.OK);
+    @PostMapping("/review/{board_game_id}")
+    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto,@PathVariable Long board_game_id) throws Exception {
+        return new ResponseEntity<>(service.insertReview(dto,board_game_id), HttpStatus.OK);
     }
 
-    @GetMapping("/{work_book_id}")
-    public ResponseEntity<List<ReviewDto>> selectReviewList(@PathVariable String board_game_id) throws Exception {
+    @GetMapping("/review/{board_game_id}")
+    public ResponseEntity<List<ReviewDto>> selectReviewList(@PathVariable Long board_game_id) throws Exception {
         return new ResponseEntity<>(service.selectReviewList(board_game_id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{review_id}")
-    public ResponseEntity<String> deleteReview(@PathVariable String review_id) throws Exception {
+    @DeleteMapping("/review/{review_id}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long review_id) throws Exception {
         return new ResponseEntity<>(service.deleteReview(review_id), HttpStatus.OK);
     }
 

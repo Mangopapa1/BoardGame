@@ -22,7 +22,7 @@ public class ReviewServiceImpl implements ReviewService {
 //    private final BCryptModule bCryptModule;
 
     @Override
-    public ReviewDto insertReview(ReviewDto dto) throws Exception {
+    public ReviewDto insertReview(ReviewDto dto,Long board_game_id) throws Exception {
 
         if (dto.getReplyContent().equals("")) {
             throw new Exception("내용을 입력해 주세요");
@@ -31,27 +31,27 @@ public class ReviewServiceImpl implements ReviewService {
 //        Optional<WorkBook> workBook = workBookRepository.findById(work_book_id);
 //        checkWorkBookEntity(workBook);
 //        dto.setReviewPw(bCryptModule.encodePw(dto.setReviewPw()));
-        Review entity = reviewRepository.save(dtoToEntity(dto));
+        Review entity = reviewRepository.save(dtoToEntity(dto,board_game_id));
 
         return entityToDto(entity);
     }
 
     @Override
-    public String deleteReview(String review_id) throws Exception {
-        Optional<Review> entity = reviewRepository.findById(review_id);
+    public String deleteReview(Long review_id) throws Exception {
+        Optional<Review> entity = reviewRepository.findById(String.valueOf(review_id));
         if (!entity.isPresent()) {
             throw new Exception("존재하지 않는 리뷰입니다.");
         }
 
         if (entity.get().getReviewId().equals(review_id)) {
-            reviewRepository.deleteById(review_id);
+            reviewRepository.deleteById(String.valueOf(review_id));
             return "삭제 완료";
         }
         return "삭제 실패 ex) 작성자가 다릅니다.";
     }
 
     @Override
-    public List<ReviewDto> selectReviewList(String board_game_id) throws Exception {
+    public List<ReviewDto> selectReviewList(Long board_game_id) {
 
         List<Review> entity = reviewRepository.findByBoardGameId(board_game_id);
 

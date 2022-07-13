@@ -13,15 +13,15 @@ import java.util.List;
 public interface ReviewService {
 
 
-    ReviewDto insertReview(ReviewDto dto) throws Exception;
+    ReviewDto insertReview(ReviewDto dto,Long board_game_id) throws Exception;
 
-    String deleteReview(String review_id) throws Exception;
+    String deleteReview(Long review_id) throws Exception;
 
-    List<ReviewDto> selectReviewList(String board_game_id) throws Exception;
+    List<ReviewDto> selectReviewList(Long board_game_id) throws Exception;
 
-    default Review dtoToEntity(ReviewDto dto) {
+    default Review dtoToEntity(ReviewDto dto,Long board_game_id) {
         BoardGame boardGameId = BoardGame.builder()
-                .boardGameId(dto.getBoardGameId())
+                .id(board_game_id)
                 .build();
         return Review.builder()
                 .memberId(dto.getMemberId())
@@ -36,45 +36,9 @@ public interface ReviewService {
                 .reviewId(entity.getReviewId())
                 .memberId(entity.getMemberId())
                 .replyContent(entity.getReplyContent())
-                .boardGameId(entity.getBoardgameId())
                 .createdDate(entity.getCreatedDate())
                 .modifiedDate(entity.getModifiedDate())
                 .build();
     }
 
-//    private final ReviewRepository reviewRepository;
-//
-//    //리뷰 등록
-//    @Transactional
-//    public Long write(ReviewDto review){
-//        reviewRepository.save(review);
-//        return review.getReviewId();
-//    }
-//
-//    //전체 조회
-//    public List<ReviewDto> findReviews(){
-//        return reviewRepository.findAll();
-//    }
-
-
-
-
-//    @Transactional
-//    public Long review(Long reviewId){
-
-//        ReviewDTO reviewDTO = new ReviewDTO();
-//        reviewDTO.setReviewId(reviewId);
-//
-//        /*
-//        * 리뷰 삭제
-//        * */
-//        public void delete(Long reviewId){
-//            //주문 엔티티 조회
-//            Review review = reviewDTO.findOne(reviewId);
-//            //주문 취소
-//            review.delete();
-//
-//
-//        }
-//    }
 }

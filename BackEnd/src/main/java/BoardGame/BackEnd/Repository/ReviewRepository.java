@@ -9,20 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review,String> {
-    List<Review> findByBoardGameId(String boardGameId);
-
-
-//    private final EntityManager em;
-//
-//    public void save(ReviewDto review){
-//        em.persist(review);
-//    }
-//
-//    public ReviewDto findOne(Long reviewId){
-//        return em.find(ReviewDto.class, reviewId);
-//    }
-//
-//    public List<ReviewDto> findAll(){
-//        return em.createQuery("select m from Review m", ReviewDto.class).getResultList();
-//    }
+    List<Review> findByBoardGameId(Long boardGameId);
 }
