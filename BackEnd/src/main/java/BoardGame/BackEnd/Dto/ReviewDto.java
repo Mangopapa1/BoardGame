@@ -13,6 +13,7 @@ public class ReviewDto {
     private String memberId;
     private Long boardGameId;
     private String replyContent;
+    private Long reviewPoints;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 }
