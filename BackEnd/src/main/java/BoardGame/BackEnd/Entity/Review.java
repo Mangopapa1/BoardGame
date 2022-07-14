@@ -1,17 +1,33 @@
 package BoardGame.BackEnd.Entity;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@SequenceGenerator(
+        name="REVIEW_SEQ_GEN",
+        sequenceName="REVIEW_SEQ",
+        initialValue=1,
+        allocationSize=1
+)
 @Data
-@Table(name = "review")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Table(name = "review")
 public class Review {
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy=GenerationType.SEQUENCE,
+            generator="REVIEW_SEQ_GEN"
+    )
     @Column(name = "review_id")
     private Long reviewId;
 
@@ -21,15 +37,25 @@ public class Review {
     @Column(name = "member_id")
     private String memberId;
 
-    @Column(name = "board_game_id")
-    private Long boardGameId;
+    @ManyToOne(
+            fetch = FetchType.LAZY
+    )
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    //@Column(name = "board_game_id")
+    private BoardGame boardGameId;
 
     @Column(name = "reply_content")
     private String replyContent;
 
-    @Column(name = "created_date")
-    private String createdDate;
+    @Column(name = "review_points")
+    private String reviewPoints;
 
+    @CreatedDate
+    @Column(name = "created_date", updatable =false)
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
     @Column(name = "modified_date")
-    private String modifiedDate;
+    private LocalDateTime modifiedDate;
+
 }
