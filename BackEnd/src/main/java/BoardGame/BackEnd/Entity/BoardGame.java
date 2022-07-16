@@ -31,6 +31,10 @@ public class BoardGame {
     @Column
     private String difficulty;
 
+    private String image;
+
+    private String description;
+
 
 
 }
