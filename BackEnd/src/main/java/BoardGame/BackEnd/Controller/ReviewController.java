@@ -1,28 +1,36 @@
 package BoardGame.BackEnd.Controller;
 
+
+import BoardGame.BackEnd.Dto.ReviewDto;
+import BoardGame.BackEnd.Service.ReviewService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/poyo")
+@Log4j2
 public class ReviewController {
-    /**
-     * 게시글 생성
-     */
-//    @PostMapping("/review")
-//    public Long save(@RequestBody final BoardRequestDto params) {
-//        return boardService.save(params);
-//    }
-//
-//    /**
-//     * 게시글 리스트 조회
-//     */
-//    @GetMapping("/review")
-//    public List<BoardResponseDto> findAll() {
-//        return boardService.findAll();
-//    }
-//
-//    /**
-//     * 게시글 수정
-//     */
-//    @PatchMapping("/review/{id}")
-//    public Long save(@PathVariable final Long id, @RequestBody final BoardRequestDto params) {
-//        return boardService.update(id, params);
-//    }
-    //
+    private final ReviewService service;
+
+    @PostMapping("/review/{board_game_id}")
+    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto,@PathVariable Long board_game_id) throws Exception {
+        return new ResponseEntity<>(service.insertReview(dto,board_game_id), HttpStatus.OK);
+    }
+
+    @GetMapping("/review/{board_game_id}")
+    public ResponseEntity<List<ReviewDto>> selectReviewList(@PathVariable Long board_game_id) throws Exception {
+        return new ResponseEntity<>(service.selectReviewList(board_game_id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/review/{review_id}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long review_id) throws Exception {
+        return new ResponseEntity<>(service.deleteReview(review_id), HttpStatus.OK);
+    }
+
 }

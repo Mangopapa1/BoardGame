@@ -1,5 +1,6 @@
 package BoardGame.BackEnd.Entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "board_game")
 @Data
+@Builder
 public class BoardGame {
 
     @Id
@@ -18,7 +20,7 @@ public class BoardGame {
     private String name;
 
     @Column
-    private String player;
+    private String players;
 
     @Column(name = "play_time")
     private String playTime;
@@ -28,6 +30,10 @@ public class BoardGame {
 
     @Column
     private String difficulty;
+
+    private String image;
+
+    private String description;
 
 
 
