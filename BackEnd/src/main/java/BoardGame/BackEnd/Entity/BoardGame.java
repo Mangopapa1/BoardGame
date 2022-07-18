@@ -24,7 +24,7 @@ public class BoardGame {
     private String playTime;
 
     @Column
-    private String type;
+    private String category;
 
     @Column
     private String difficulty;
