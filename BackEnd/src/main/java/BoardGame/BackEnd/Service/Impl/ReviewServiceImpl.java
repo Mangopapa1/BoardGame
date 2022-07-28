@@ -53,7 +53,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewDto> selectReviewList(Long board_game_id) {
 
-        List<Review> entity = reviewRepository.findByBoardGameId(board_game_id);
+        List<Review> entity = reviewRepository.findByBoardGameId(String.valueOf(board_game_id));
 
         return entity.stream().map(data -> entityToDto(data)).collect(Collectors.toList());
     }
