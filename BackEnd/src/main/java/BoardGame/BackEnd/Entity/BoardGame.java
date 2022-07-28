@@ -1,14 +1,17 @@
 package BoardGame.BackEnd.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "board_game")
-@Data
 @Builder
+@AllArgsConstructor
+@Getter
 public class BoardGame {
 
     @Id
@@ -31,10 +34,12 @@ public class BoardGame {
     @Column
     private String difficulty;
 
+    @Column
     private String image;
 
+    @Column
     private String description;
 
-
-
+    public BoardGame() {
+    }
 }

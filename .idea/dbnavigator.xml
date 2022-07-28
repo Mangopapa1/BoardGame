@@ -24,12 +24,12 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="88e4c0aa-fe83-49e0-a3e0-6e316977213e">
-      <console name="poyo" type="STANDARD" schema="poyodb" session="Main" />
+      <console name="poyo" type="STANDARD" schema="poyodb" session="Main"><![CDATA[select * from board_game;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -39,7 +39,11 @@
     <connection id="88e4c0aa-fe83-49e0-a3e0-6e316977213e" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="88e4c0aa-fe83-49e0-a3e0-6e316977213e" dataset="poyodb.board_game" active-filter-id="" />
+    <filter-actions connection-id="88e4c0aa-fe83-49e0-a3e0-6e316977213e" dataset="poyodb.board_game" active-filter-id="EMPTY_FILTER">
+      <filter id="c5d801fd-b324-4974-9474-fd6af9acf01c" name="카탄" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="name" operator="=" value="카탄" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

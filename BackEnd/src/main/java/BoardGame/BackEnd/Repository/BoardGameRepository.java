@@ -1,34 +1,31 @@
 package BoardGame.BackEnd.Repository;
 
 import BoardGame.BackEnd.Entity.BoardGame;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-@RequiredArgsConstructor
-public class BoardGameRepository {
+public interface BoardGameRepository extends JpaRepository<BoardGame, Long> {
 
-    private final EntityManager em;
+    Optional<BoardGame> findByNameLike(String name); //이름 검색
+
+    List<BoardGame> findByDifficultyLike(String difficulty); //난이도 검색
+
+    List<BoardGame> findByCategoryLike(String category); //장르별 검색
+    
+    List<BoardGame> findByPlayersLike(String players); //인원별 검색
 
 
-    //보드게임 조회
-    public BoardGame findByName(String name){
-        return em.find(BoardGame.class, name);
-    }
 
-    //장르별 조회
-    public List<BoardGame> findByType(String type) {
-        return em.createQuery("select m from BoardGame m where m.type = :type",BoardGame.class).getResultList();
-    }
 
-    //난이도별 조회
-    public List<BoardGame> findByDifficulty(String difficulty){
-        return em.createQuery("select m from BoardGame m where m.difficulty = :difficulty", BoardGame.class).getResultList();
-    }
+
+
+
+
+
 
 
 
