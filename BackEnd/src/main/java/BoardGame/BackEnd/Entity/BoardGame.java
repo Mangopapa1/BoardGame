@@ -29,7 +29,7 @@ public class BoardGame {
     private String playTime;
 
     @Column
-    private String category;
+    private String type;
 
     @Column
     private String difficulty;
