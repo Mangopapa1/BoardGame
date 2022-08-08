@@ -12,7 +12,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/poyo")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://54.180.58.142:8080")
 public class BoardGameApiController {
 
     private final BoardGameRepository boardGameRepository;
