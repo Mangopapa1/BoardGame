@@ -1,15 +1,22 @@
 package BoardGame.BackEnd.Service;
 
+import BoardGame.BackEnd.Dto.BoardGameDto;
 import BoardGame.BackEnd.Entity.BoardGame;
-import BoardGame.BackEnd.Repository.BoardGameRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class BoardGameService {
+@Transactional
+public interface BoardGameService {
 
+    List<BoardGameDto> getAllGames();
+
+    List<BoardGameDto> getTypeGames(String type);
+
+    List<BoardGameDto> getDifficultyGames(String difficulty);
+
+    List<BoardGame> getNameGame(String name);
 
 }
