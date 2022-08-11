@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -17,6 +18,6 @@ public interface BoardGameService {
 
     List<BoardGameDto> getDifficultyGames(String difficulty);
 
-    List<BoardGame> getNameGame(String name);
+    Optional<BoardGame> getNameGame(String name);
 
 }
