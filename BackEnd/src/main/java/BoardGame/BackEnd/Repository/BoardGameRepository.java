@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public interface BoardGameRepository extends JpaRepository<BoardGame, Long> {
 
-    @Query("select m from BoardGame m where m.name like %:name%")
-    List<BoardGame> findByName(@Param("name") String name); //이름 검색
+
+    Optional<BoardGame> findByNameStartingWith(String name); //이름 검색
 
 
 
