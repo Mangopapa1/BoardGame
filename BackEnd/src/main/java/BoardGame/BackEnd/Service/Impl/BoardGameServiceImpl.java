@@ -25,17 +25,17 @@ public class BoardGameServiceImpl implements BoardGameService {
     }
     @Override
     public List<BoardGameDto> getTypeGames(String type) {
-        return boardGameRepository.findByType(type).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+        return boardGameRepository.findByTypeContaining(type).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
     }
 
     @Override
     public List<BoardGameDto> getDifficultyGames(String difficulty) {
-        return boardGameRepository.findByDifficulty(difficulty).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+        return boardGameRepository.findByDifficultyContaining(difficulty).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
     }
 
     @Override
     public Optional<BoardGame> getNameGame(String name) {
-        return boardGameRepository.findByNameStartingWith("name");
+        return boardGameRepository.findByNameContaining(name);
     }
 
 
