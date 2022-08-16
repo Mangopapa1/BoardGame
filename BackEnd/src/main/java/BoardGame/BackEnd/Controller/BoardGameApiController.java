@@ -12,7 +12,6 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/poyo")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BoardGameApiController {
 
     private final BoardGameServiceImpl boardGameService;
