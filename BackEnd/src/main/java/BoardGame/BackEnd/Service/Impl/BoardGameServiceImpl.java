@@ -1,7 +1,6 @@
 package BoardGame.BackEnd.Service.Impl;
 
 import BoardGame.BackEnd.Dto.BoardGameDto;
-import BoardGame.BackEnd.Entity.BoardGame;
 import BoardGame.BackEnd.Repository.BoardGameRepository;
 import BoardGame.BackEnd.Service.BoardGameService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,8 +32,13 @@ public class BoardGameServiceImpl implements BoardGameService {
     }
 
     @Override
-    public Optional<BoardGame> getNameGame(String name) {
-        return boardGameRepository.findByNameContaining(name);
+    public List<BoardGameDto> getNameGame(String name) {
+        return boardGameRepository.findByNameContaining(name).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BoardGameDto> getPlayersGame(String players) {
+        return boardGameRepository.findByPlayersContaining(players).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
     }
 
 

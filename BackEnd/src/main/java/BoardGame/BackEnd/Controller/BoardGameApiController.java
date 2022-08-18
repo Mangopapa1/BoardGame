@@ -24,19 +24,24 @@ public class BoardGameApiController {
     }
 
     @GetMapping("/search/name/{name}") //이름
-    public Optional<BoardGame> findByName(@PathVariable String name){
+    public List<BoardGameDto> searchName(@PathVariable String name){
         return boardGameService.getNameGame(name);
     }
 
     @GetMapping("/search/type/{type}") //장르별
-    public List<BoardGameDto> findByType(@PathVariable String type){
+    public List<BoardGameDto> searchType(@PathVariable String type){
         return boardGameService.getTypeGames(type);
 
     }
 
     @GetMapping("/search/difficulty/{difficulty}") //난이도
-    public List<BoardGameDto> findByDifficulty(@PathVariable String difficulty){
+    public List<BoardGameDto> searchDifficulty(@PathVariable String difficulty){
         return boardGameService.getDifficultyGames(difficulty);
+    }
+
+    @GetMapping("/search/players/{players}")
+    public List<BoardGameDto> searchPlayers(@PathVariable String players){
+        return boardGameService.getPlayersGame(players);
     }
 
     }
