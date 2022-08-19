@@ -1,8 +1,8 @@
-package BoardGame.BackEnd.Service.Impl;
+package BoardGame.BackEnd.service.impl;
 
-import BoardGame.BackEnd.Dto.BoardGameDto;
-import BoardGame.BackEnd.Repository.BoardGameRepository;
-import BoardGame.BackEnd.Service.BoardGameService;
+import BoardGame.BackEnd.dto.BoardGameDto;
+import BoardGame.BackEnd.repository.BoardGameRepository;
+import BoardGame.BackEnd.service.BoardGameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

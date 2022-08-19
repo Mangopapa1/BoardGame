@@ -1,8 +1,8 @@
-package BoardGame.BackEnd.Service;
+package BoardGame.BackEnd.service;
 
-import BoardGame.BackEnd.Dto.ReviewDto;
-import BoardGame.BackEnd.Entity.BoardGame;
-import BoardGame.BackEnd.Entity.Review;
+import BoardGame.BackEnd.dto.ReviewDto;
+import BoardGame.BackEnd.entity.BoardGame;
+import BoardGame.BackEnd.entity.Review;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

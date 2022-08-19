@@ -1,4 +1,4 @@
-package BoardGame.BackEnd.Dto;
+package BoardGame.BackEnd.dto;
 
 import lombok.Builder;
 import lombok.Data;

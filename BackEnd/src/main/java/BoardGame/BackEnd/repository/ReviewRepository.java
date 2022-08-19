@@ -1,7 +1,6 @@
-package BoardGame.BackEnd.Repository;
+package BoardGame.BackEnd.repository;
 
-import BoardGame.BackEnd.Entity.Review;
-import lombok.RequiredArgsConstructor;
+import BoardGame.BackEnd.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

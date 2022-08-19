@@ -1,6 +1,6 @@
-package BoardGame.BackEnd.Dto;
+package BoardGame.BackEnd.dto;
 
-import BoardGame.BackEnd.Entity.BoardGame;
+import BoardGame.BackEnd.entity.BoardGame;
 import lombok.Builder;
 import lombok.Getter;
 

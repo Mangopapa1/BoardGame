@@ -1,9 +1,9 @@
-package BoardGame.BackEnd.Service.Impl;
+package BoardGame.BackEnd.service.impl;
 
-import BoardGame.BackEnd.Dto.ReviewDto;
-import BoardGame.BackEnd.Entity.Review;
-import BoardGame.BackEnd.Repository.ReviewRepository;
-import BoardGame.BackEnd.Service.ReviewService;
+import BoardGame.BackEnd.dto.ReviewDto;
+import BoardGame.BackEnd.entity.Review;
+import BoardGame.BackEnd.repository.ReviewRepository;
+import BoardGame.BackEnd.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
