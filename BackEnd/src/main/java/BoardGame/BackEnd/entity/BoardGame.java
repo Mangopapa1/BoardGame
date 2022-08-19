@@ -1,8 +1,7 @@
-package BoardGame.BackEnd.Entity;
+package BoardGame.BackEnd.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;

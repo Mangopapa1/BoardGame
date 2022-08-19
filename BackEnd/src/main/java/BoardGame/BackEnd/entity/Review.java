@@ -1,4 +1,4 @@
-package BoardGame.BackEnd.Entity;
+package BoardGame.BackEnd.entity;
 
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
