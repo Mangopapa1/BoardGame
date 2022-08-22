@@ -10,7 +10,8 @@ public class BoardGameDto {
 
     private String name;
     private String playTime;
-    private String players;
+    private Integer MinPlayer;
+    private Integer MaxPlayer;
     private String type;
     private String difficulty;
     private String description;
@@ -20,7 +21,8 @@ public class BoardGameDto {
         return BoardGameDto.builder()
                 .name(boardGame.getName())
                 .playTime(boardGame.getPlayTime())
-                .players(boardGame.getPlayers())
+                .MinPlayer(boardGame.getMinPlayer())
+                .MaxPlayer(boardGame.getMaxPlayer())
                 .type(boardGame.getType())
                 .difficulty(boardGame.getDifficulty())
                 .description(boardGame.getDescription())
