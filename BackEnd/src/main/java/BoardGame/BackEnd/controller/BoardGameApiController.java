@@ -77,16 +77,29 @@ public class BoardGameApiController {
     }
 
 
-    @Operation(summary = "적정인원수 검색")
+    @Operation(summary = "최소인원수 검색")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
             @ApiResponse(responseCode = "404", description = "NOT FOUND"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
     })
-    @GetMapping("/search/players/{players}") //인원수
-    public List<BoardGameDto> searchPlayers(@Parameter(description = "적정인원수", required = true, example = "2, 4") @PathVariable String players){
-        return boardGameService.getPlayersGame(players);
+    @GetMapping("/search/player/{MinPlayer}") //인원수
+    public List<BoardGameDto> searchMinPlayers(@Parameter(description = "최소인원수", required = true, example = "2, 숫자만") @PathVariable Integer player){
+        return boardGameService.getMinPlayer(player);
+    }
+
+
+    @Operation(summary = "최소인원수 검색")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+    })
+    @GetMapping("/search/player/{MaxPlayer}")
+    public List<BoardGameDto> searchMaxPlayer(@Parameter(description = "최대인원수", required = true, example = "5, 숫자만") @PathVariable Integer player){
+        return boardGameService.getMaxPlayer(player);
     }
 
     }
