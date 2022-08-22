@@ -84,9 +84,9 @@ public class BoardGameApiController {
             @ApiResponse(responseCode = "404", description = "NOT FOUND"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
     })
-    @GetMapping("/search/player/{MinPlayer}") //인원수
-    public List<BoardGameDto> searchMinPlayers(@Parameter(description = "최소인원수", required = true, example = "2, 숫자만") @PathVariable Integer player){
-        return boardGameService.getMinPlayer(player);
+    @GetMapping("/search/min-player/{minPlayer}") //인원수
+    public List<BoardGameDto> searchMinPlayers(@Parameter(description = "최소인원수", required = true, example = "2, 숫자만") @PathVariable Integer minPlayer){
+        return boardGameService.getMinPlayer(minPlayer);
     }
 
 
@@ -97,9 +97,9 @@ public class BoardGameApiController {
             @ApiResponse(responseCode = "404", description = "NOT FOUND"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
     })
-    @GetMapping("/search/player/{MaxPlayer}")
-    public List<BoardGameDto> searchMaxPlayer(@Parameter(description = "최대인원수", required = true, example = "5, 숫자만") @PathVariable Integer player){
-        return boardGameService.getMaxPlayer(player);
+    @GetMapping("/search/max-player/{maxPlayer}")
+    public List<BoardGameDto> searchMaxPlayer(@Parameter(description = "최대인원수", required = true, example = "5, 숫자만") @PathVariable Integer maxPlayer){
+        return boardGameService.getMaxPlayer(maxPlayer);
     }
 
     }
