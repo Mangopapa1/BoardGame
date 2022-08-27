@@ -21,8 +21,11 @@ public class BoardGame {
     @Column
     private String name;
 
-    @Column
-    private String players;
+    @Column(name = "min_player")
+    private Integer minPlayer;
+
+    @Column(name = "max_player")
+    private Integer maxPlayer;
 
     @Column(name = "play_time")
     private String playTime;
@@ -39,6 +42,8 @@ public class BoardGame {
     @Column
     private String description;
 
+
     public BoardGame() {
+
     }
 }

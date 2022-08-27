@@ -18,6 +18,8 @@ public interface BoardGameService {
 
     List<BoardGameDto> getNameGame(String name);
 
-    List<BoardGameDto> getPlayersGame(String players);
+    List<BoardGameDto> getMinPlayer(int player);
+
+    List<BoardGameDto> getMaxPlayer(int player);
 
 }

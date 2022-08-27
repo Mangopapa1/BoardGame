@@ -17,7 +17,9 @@ public interface BoardGameRepository extends JpaRepository<BoardGame, Long> {
     List<BoardGame> findByTypeContaining(String type); //장르별 검색
 
 
-    List<BoardGame> findByPlayersContaining(String players); //인원별 검색
+    List<BoardGame> findByMinPlayer(int minPlayer); //인원별 검색
+
+    List<BoardGame> findByMaxPlayer(int maxPlayer);
 
 
     List<BoardGame> findByDifficultyContaining(String difficulty); //난이도 검색

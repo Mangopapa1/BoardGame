@@ -37,8 +37,13 @@ public class BoardGameServiceImpl implements BoardGameService {
     }
 
     @Override
-    public List<BoardGameDto> getPlayersGame(String players) {
-        return boardGameRepository.findByPlayersContaining(players).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+    public List<BoardGameDto> getMinPlayer(int MinPlayer) {
+        return boardGameRepository.findByMinPlayer(MinPlayer).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BoardGameDto> getMaxPlayer(int MaxPlayer) {
+        return boardGameRepository.findByMaxPlayer(MaxPlayer).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
     }
 
 
