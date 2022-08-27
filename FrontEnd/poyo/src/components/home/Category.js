@@ -1,48 +1,50 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { API, COLORS } from "../../constants";
 import ListItem from "./CategoryItem";
 import CategoryResult from "./CategoryResult";
 
 export default function Category() {
-  const categoryDummy = [
-    {
-      id: 1,
-      category: "미스테리",
-    },
-    {
-      id: 2,
-      category: "소설",
-    },
-    {
-      id: 3,
-      category: "카드",
-    },
-    {
-      id: 4,
-      category: "범죄",
-    },
-    {
-      id: 5,
-      category: "어린이",
-    },
-    {
-      id: 6,
-      category: "추리",
-    },
-    {
-      id: 7,
-      category: "건물",
-    },
-    {
-      id: 8,
-      category: "주사위",
-    },
-    {
-      id: 9,
-      category: "술",
-    },
-  ];
+  // const categoryDummy = [
+  //   {
+  //     id: 1,
+  //     category: "미스테리",
+  //   },
+  //   {
+  //     id: 2,
+  //     category: "소설",
+  //   },
+  //   {
+  //     id: 3,
+  //     category: "카드",
+  //   },
+  //   {
+  //     id: 4,
+  //     category: "범죄",
+  //   },
+  //   {
+  //     id: 5,
+  //     category: "어린이",
+  //   },
+  //   {
+  //     id: 6,
+  //     category: "추리",
+  //   },
+  //   {
+  //     id: 7,
+  //     category: "건물",
+  //   },
+  //   {
+  //     id: 8,
+  //     category: "주사위",
+  //   },
+  //   {
+  //     id: 9,
+  //     category: "술",
+  //   },
+  // ];
 
   const personDummy = [
     {
@@ -91,23 +93,66 @@ export default function Category() {
   ];
 
   const [isSelect, setIsSelect] = useState(false);
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
+  const [games, setGames] = useState("")
+  const [categoryGame, setCategoryGame] = useState([
+    {
+      description: "",
+      difficulty: "",
+      image: null,
+      name: "",
+      playTime: "",
+      players: "",
+      type: "",
+    }
+  ])
+
+  const getGame = async () => {
+    const res = await axios.get(`${API}/games`, {
+      headers: {
+        "Content-type": "application/json",
+      }
+    });
+    setGames(res.data)
+  };
+
+  const gameCategory = []
+
+  // games.map((v) => console.log(v))
+
+  console.log(gameCategory);
 
   const handleClick = (e, idx) => {
     setCategory(e.target.value);
-    const categoryArr = Array(categoryDummy.length).fill(false);
+    const categoryArr = Array(categoryGame.length).fill(false);
     categoryArr[idx] = true;
     setIsSelect(categoryArr);
   };
+
+  const getCategory = async () => {
+    const res = await axios.get(`${API}/search/type/${category}`)
+    setCategoryGame(res.data)
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, [category]);
+
+  useEffect(() => {
+    getGame();
+    getCategory();
+  }, []);
+
+  console.log(category);
 
   return (
     <>
       <CategoryList>
         <List className="category">
-          {categoryDummy.map((item, index) => {
+          {categoryGame.map((item, index) => {
             return (
               <ListItem
-                key={item.id}
+                key={item.name}
                 item={item}
                 index={index}
                 handleClick={handleClick}
