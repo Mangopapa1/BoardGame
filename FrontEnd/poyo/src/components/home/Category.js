@@ -1,50 +1,38 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { API, COLORS } from "../../constants";
 import ListItem from "./CategoryItem";
 import CategoryResult from "./CategoryResult";
 
 export default function Category() {
-  // const categoryDummy = [
-  //   {
-  //     id: 1,
-  //     category: "미스테리",
-  //   },
-  //   {
-  //     id: 2,
-  //     category: "소설",
-  //   },
-  //   {
-  //     id: 3,
-  //     category: "카드",
-  //   },
-  //   {
-  //     id: 4,
-  //     category: "범죄",
-  //   },
-  //   {
-  //     id: 5,
-  //     category: "어린이",
-  //   },
-  //   {
-  //     id: 6,
-  //     category: "추리",
-  //   },
-  //   {
-  //     id: 7,
-  //     category: "건물",
-  //   },
-  //   {
-  //     id: 8,
-  //     category: "주사위",
-  //   },
-  //   {
-  //     id: 9,
-  //     category: "술",
-  //   },
-  // ];
+  const categoryDummy = [
+    {
+      id: 1,
+      category: "미스테리",
+    },
+    {
+      id: 2,
+      category: "전략",
+    },
+    {
+      id: 3,
+      category: "카드",
+    },
+    {
+      id: 4,
+      category: "범죄",
+    },
+    {
+      id: 5,
+      category: "타일",
+    },
+    {
+      id: 6,
+      category: "추리",
+    },
+  ];
 
   const personDummy = [
     {
@@ -93,34 +81,7 @@ export default function Category() {
   ];
 
   const [isSelect, setIsSelect] = useState(false);
-  const [category, setCategory] = useState("");
-  const [games, setGames] = useState("")
-  const [categoryGame, setCategoryGame] = useState([
-    {
-      description: "",
-      difficulty: "",
-      image: null,
-      name: "",
-      playTime: "",
-      players: "",
-      type: "",
-    }
-  ])
-
-  const getGame = async () => {
-    const res = await axios.get(`${API}/games`, {
-      headers: {
-        "Content-type": "application/json",
-      }
-    });
-    setGames(res.data)
-  };
-
-  const gameCategory = []
-
-  // games.map((v) => console.log(v))
-
-  console.log(gameCategory);
+  const [category, setCategory] = useState();
 
   const handleClick = (e, idx) => {
     setCategory(e.target.value);
@@ -129,30 +90,60 @@ export default function Category() {
     setIsSelect(categoryArr);
   };
 
-  const getCategory = async () => {
-    const res = await axios.get(`${API}/search/type/${category}`)
+  const [categoryGame, setCategoryGame] = useState([
+    {
+      description: "",
+      difficulty: "",
+      image: null,
+      name: "",
+      playTime: "",
+      minPlayer: 0,
+      maxPlayer: 0,
+      type: "",
+    }
+  ])
+
+  const getGame = async () => {
+    const res = await axios.get(`${API}/games`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
     setCategoryGame(res.data)
-  };
+  }
+
+  const categoryArr = []
+
+  categoryGame.map((item, index) => {
+    const type = item.type
+    if (type.includes(",")) {
+      const typeSplit = type.split(',')
+      typeSplit.forEach(type => categoryArr.push(type))
+    } else categoryArr.push(item.type)
+  })
+
+  const set = new Set(categoryArr)
+
+  const setCategoryArr = [...set]
+
+  const newArr = []
+
+  setCategoryArr.map((item, index) => {
+    return newArr.push({ type: item })
+  })
 
   useEffect(() => {
-    getCategory();
-  }, [category]);
-
-  useEffect(() => {
-    getGame();
-    getCategory();
-  }, []);
-
-  console.log(category);
+    getGame()
+  }, [])
 
   return (
     <>
       <CategoryList>
         <List className="category">
-          {categoryGame.map((item, index) => {
+          {newArr.map((item, index) => {
             return (
               <ListItem
-                key={item.name}
+                key={index}
                 item={item}
                 index={index}
                 handleClick={handleClick}
@@ -193,7 +184,7 @@ export default function Category() {
           })}
         </List>
       </CategoryList>
-      {category && <CategoryResult />}
+      {category && <CategoryResult item={categoryGame} category={category} />}
     </>
   );
 }
