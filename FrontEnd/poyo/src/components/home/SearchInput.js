@@ -1,7 +1,9 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { API, COLORS } from "../../constants";
 import PopularSearch from "./PopularSearch";
 
 export default function SearchInput() {
@@ -18,6 +20,35 @@ export default function SearchInput() {
     e.preventDefault();
     navigate(`/search/${search}`, { state: search });
   };
+
+  // const [genre, setGenre] = useState('');
+
+  // const getGame = async () => {
+  //   const res = await axios.get(`${API}/games`,
+  //     {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       }
+  //     },
+  //   );
+  //   console.log(res)
+  // };
+
+  // const getSearch = async () => {
+  //   const res = await axios.get(`${API}/search/name/${search}`,
+  //     {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   console.log(res)
+  // };
+
+  // useEffect(() => {
+  //   getGame();
+  //   // getSearch();
+  // }, []);
 
   return (
     <>

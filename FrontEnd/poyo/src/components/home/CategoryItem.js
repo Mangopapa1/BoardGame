@@ -11,12 +11,12 @@ export default function ListItem({
   return (
     <>
       <Item onClick={(e) => handleClick(e, index)}>
-        {item.category && (
+        {item.type && (
           <button
-            className={isSelected && category === item.category ? "show" : ""}
-            value={item.category}
+            className={isSelected && category === item.type ? "show" : ""}
+            value={item.type}
           >
-            {item.category}
+            {item.type}
           </button>
         )}
         {item.person && (
