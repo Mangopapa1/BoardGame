@@ -26,6 +26,7 @@ public class BoardGameDto {
                 .type(boardGame.getType())
                 .difficulty(boardGame.getDifficulty())
                 .description(boardGame.getDescription())
+                .image(boardGame.getImage())
                 .build();
     }
 

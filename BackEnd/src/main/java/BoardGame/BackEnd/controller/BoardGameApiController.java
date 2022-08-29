@@ -90,7 +90,7 @@ public class BoardGameApiController {
     }
 
 
-    @Operation(summary = "최소인원수 검색")
+    @Operation(summary = "최대인원수 검색")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
