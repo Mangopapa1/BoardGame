@@ -18,19 +18,19 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService service;
 
-    @PostMapping("/review/{board_game_id}")
-    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto,@PathVariable Long board_game_id) throws Exception {
-        return new ResponseEntity<>(service.insertReview(dto,board_game_id), HttpStatus.OK);
+    @PostMapping("/review/{boardGameId}")
+    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto,@PathVariable Long boardGameId) throws Exception {
+        return new ResponseEntity<>(service.insertReview(dto,boardGameId), HttpStatus.OK);
     }
 
-    @GetMapping("/review/{board_game_id}")
-    public ResponseEntity<List<ReviewDto>> selectReviewList(@PathVariable Long board_game_id) throws Exception {
-        return new ResponseEntity<>(service.selectReviewList(board_game_id), HttpStatus.OK);
+    @GetMapping("/review/{boardGameId}")
+    public ResponseEntity<List<ReviewDto>> selectReviewList(@PathVariable Long boardGameId) throws Exception {
+        return new ResponseEntity<>(service.selectReviewList(boardGameId), HttpStatus.OK);
     }
 
-    @DeleteMapping("/review/{review_id}")
-    public ResponseEntity<String> deleteReview(@PathVariable Long review_id) throws Exception {
-        return new ResponseEntity<>(service.deleteReview(review_id), HttpStatus.OK);
+    @DeleteMapping("/review/{reviewId}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) throws Exception {
+        return new ResponseEntity<>(service.deleteReview(reviewId), HttpStatus.OK);
     }
 
 }

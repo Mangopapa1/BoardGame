@@ -5,23 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<Review,String> {
-    List<Review> findByBoardGameId(String boardGameId);
-
-
-//    private final EntityManager em;
-//
-//    public void save(ReviewDto review){
-//        em.persist(review);
-//    }
-//
-//    public ReviewDto findOne(Long reviewId){
-//        return em.find(ReviewDto.class, reviewId);
-//    }
-//
-//    public List<ReviewDto> findAll(){
-//        return em.createQuery("select m from Review m", ReviewDto.class).getResultList();
-//    }`
+public interface ReviewRepository extends JpaRepository<Review,Long> {
+    List<Review> findByBoardGameId(Long boardGameId);
 }
