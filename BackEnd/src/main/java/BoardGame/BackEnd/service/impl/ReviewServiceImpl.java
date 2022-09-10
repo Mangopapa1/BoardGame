@@ -1,4 +1,4 @@
-package BoardGame.BackEnd.Service.impl;
+package BoardGame.BackEnd.service.impl;
 
 import BoardGame.BackEnd.dto.ReviewDto;
 import BoardGame.BackEnd.entity.Review;
