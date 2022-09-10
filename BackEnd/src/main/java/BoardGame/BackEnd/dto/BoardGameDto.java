@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public class BoardGameDto {
 
+    private Long id;
     private String name;
     private String playTime;
     private Integer MinPlayer;
@@ -19,6 +20,7 @@ public class BoardGameDto {
 
     public static BoardGameDto fromEntity(BoardGame boardGame){
         return BoardGameDto.builder()
+                .id(boardGame.getId())
                 .name(boardGame.getName())
                 .playTime(boardGame.getPlayTime())
                 .MinPlayer(boardGame.getMinPlayer())
