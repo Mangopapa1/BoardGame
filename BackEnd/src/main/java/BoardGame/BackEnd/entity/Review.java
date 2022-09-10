@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "review")
 public class Review {
     @Id
     @GeneratedValue(
@@ -42,13 +41,13 @@ public class Review {
     )
     @OnDelete(action = OnDeleteAction.CASCADE)
     //@Column(name = "board_game_id")
-    private BoardGame boardGameId;
+    BoardGame boardGame;
 
     @Column(name = "reply_content")
     private String replyContent;
 
     @Column(name = "review_points")
-    private String reviewPoints;
+    private Long reviewPoints;
 
     @CreatedDate
     @Column(name = "created_date", updatable =false)

@@ -1,12 +1,14 @@
 package BoardGame.BackEnd.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ReviewDto {
     private Long reviewId;
     private String reviewPw;
