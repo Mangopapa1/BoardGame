@@ -1,5 +1,5 @@
 // export const API = "https://54.180.58.142/poyo";
-export const API = "http://54.180.58.142:8080/poyo";
+export const API = "http://43.200.102.144:8080/poyo";
 // export const API = "http://192.168.200.103:8080";
 
 
