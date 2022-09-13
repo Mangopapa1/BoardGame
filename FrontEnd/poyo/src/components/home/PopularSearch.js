@@ -5,7 +5,7 @@ export default function PopularSearch() {
   const dummy = [
     {
       id: 1,
-      word: "미스테",
+      word: "미스테리",
     },
     {
       id: 2,
