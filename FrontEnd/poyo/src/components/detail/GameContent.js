@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StarRating from "./StarRating";
 
 export default function GameContent() {
   return (
@@ -41,16 +42,7 @@ export default function GameContent() {
         </GameDetail>
       </GameBody>
       <ReviewContainer>
-        <RatingBox>
-          <StarBox>
-            <img src="img/star.svg" alt="" />
-            <img src="img/star.svg" alt="" />
-            <img src="img/star.svg" alt="" />
-            <img src="img/star.svg" alt="" />
-            <img src="img/star.svg" alt="" />
-          </StarBox>
-          <span>5.0</span>
-        </RatingBox>
+        <StarRating />
         <div>
           <InputContainer>
             <InputBox type="text" placeholder="작성자" />
@@ -133,29 +125,7 @@ const GameDetail = styled.div`
   }
 `;
 const ReviewContainer = styled.form``;
-const RatingBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 7rem;
-  margin: 1rem 0;
-  text-align: center;
-  span {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 500;
-    color: #9e9e9e;
-  }
-`;
-const StarBox = styled.div`
-  img {
-    width: 1.75rem;
-  }
-  display: flex;
-  justify-content: space-around;
-  width: 11.3rem;
-  margin: 0 auto;
-`;
+
 const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
