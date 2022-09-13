@@ -49,3 +49,15 @@ button {
   border: 0;
   padding: 0;
 }
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fade-out {
+  opacity: 0;
+  animation: fadeOut ease-in-out 1.3s;
+}

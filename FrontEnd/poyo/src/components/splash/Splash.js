@@ -4,7 +4,7 @@ import { COLORS } from "../../constants";
 export default function Splash () {
     return (
         <>
-        <SplashWrap>
+        <SplashWrap className="fade-out">
         <Logo src="img/logo.svg" alt="메인로고" />
         </SplashWrap>
         </>
