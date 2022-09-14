@@ -5,11 +5,13 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+
 @SequenceGenerator(
         name="REVIEW_SEQ_GEN",
         sequenceName="REVIEW_SEQ",
@@ -21,10 +23,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EntityListeners(AuditingEntityListener.class)
+@Entity
 public class Review {
     @Id
     @GeneratedValue(
-            strategy=GenerationType.SEQUENCE,
+            strategy=GenerationType.AUTO,
             generator="REVIEW_SEQ_GEN"
     )
     @Column(name = "review_id")
@@ -40,7 +44,7 @@ public class Review {
             fetch = FetchType.LAZY
     )
     @OnDelete(action = OnDeleteAction.CASCADE)
-    //@Column(name = "board_game_id")
+    @JoinColumn(name = "board_game_id")
     BoardGame boardGame;
 
     @Column(name = "reply_content")
