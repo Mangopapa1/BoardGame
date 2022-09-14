@@ -8,6 +8,7 @@ export default function ListItem({
   isSelected,
   category,
 }) {
+
   return (
     <>
       <Item onClick={(e) => handleClick(e, index)}>
@@ -19,20 +20,20 @@ export default function ListItem({
             {item.type}
           </button>
         )}
-        {item.person && (
+        {item.player && (
           <button
-            className={isSelected && category === item.person ? "show" : ""}
-            value={item.person}
+            className={isSelected && category === item.player ? "show" : ""}
+            value={item.player}
           >
-            {item.person}
+            {item.player}
           </button>
         )}
-        {item.level && (
+        {item.difficulty && (
           <button
-            className={isSelected && category === item.level ? "show" : ""}
-            value={item.level}
+            className={isSelected && category === item.difficulty ? "show" : ""}
+            value={item.difficulty}
           >
-            {item.level}
+            {item.difficulty}
           </button>
         )}
       </Item>
