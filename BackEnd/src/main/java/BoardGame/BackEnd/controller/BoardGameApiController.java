@@ -36,6 +36,18 @@ public class BoardGameApiController {
         return boardGameService.getAllGames();
     }
 
+    @Operation(summary = "보드게임 id 검색")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+    })
+    @GetMapping("/search/id/{id}")
+    public List<BoardGameDto> searchId(@Parameter(description = "보드게임 id", required = true, example = "1,2") @PathVariable Long id){
+        return boardGameService.getId(id);
+    }
+
 
 
 

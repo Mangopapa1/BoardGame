@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "board_game")
@@ -41,6 +42,9 @@ public class BoardGame {
 
     @Column
     private String description;
+
+    @OneToMany(mappedBy = "boardGame")
+    private List<Review> reviews;
 
 
     public BoardGame() {

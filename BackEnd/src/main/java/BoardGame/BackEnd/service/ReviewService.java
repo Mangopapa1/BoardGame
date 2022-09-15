@@ -36,6 +36,7 @@ public interface ReviewService {
     default ReviewDto entityToDto(Review entity) {
         return ReviewDto.builder()
                 .reviewId(entity.getReviewId())
+                .reviewPw(entity.getReviewPw())
                 .memberId(entity.getMemberId())
                 .replyContent(entity.getReplyContent())
                 .reviewPoints(entity.getReviewPoints())

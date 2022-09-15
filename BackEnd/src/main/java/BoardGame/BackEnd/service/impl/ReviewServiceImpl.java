@@ -6,6 +6,7 @@ import BoardGame.BackEnd.repository.ReviewRepository;
 import BoardGame.BackEnd.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
+@EnableJpaAuditing
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
