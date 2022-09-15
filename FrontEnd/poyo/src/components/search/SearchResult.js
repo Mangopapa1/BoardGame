@@ -1,71 +1,45 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { API, COLORS } from "../../constants";
 
 export default function SearchResult() {
   const location = useLocation();
 
   const navigate = useNavigate();
 
-  const [search, setSearch] = useState(location.state);
+  const [game, setGame] = useState(location.state.game)
+
+  const getGameSearch = async () => {
+    const res = await axios.get(`${API}/search/name/${search}`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    setGame(res.data)
+  }
+
+  const [search, setSearch] = useState(location.state.search);
+
   const onChangeSearch = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
 
-  const searchDummy = [
-    {
-      id: 1,
-      image:
-        "https://image.ytn.co.kr/general/jpg/2021/0311/202103110915014429_d.jpg",
-      word: location.state + " 맨션 (Suspects)",
-    },
-    {
-      id: 2,
-      image: "https://dimg.donga.com/wps/NEWS/IMAGE/2010/06/25/29410677.1.jpg",
-      word: location.state + " 사건 사고",
-    },
-    {
-      id: 3,
-      image:
-        "https://www.theguru.co.kr/data/photos/20210310/art_16152560003284_ac2b0e.jpg",
-      word: location.state + " 블로그",
-    },
-    {
-      id: 4,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGQgQgO17Fge1x1EwPp1JnjINvfFdpyeVe2A&usqp=CAU",
-      word: location.state + " 불가사의",
-    },
-    {
-      id: 5,
-      image: "https://pbs.twimg.com/media/FPepTVraAAIDjfW.png:small",
-      word: location.state + " 캔디",
-    },
-    {
-      id: 6,
-      image: "https://cdn.techm.kr/news/photo/202012/78574_74356_3753.jpg",
-      word: location.state + " 부루마블",
-    },
-    {
-      id: 7,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy-5cbYm9I0ALWYcykasXaGjYYJ2npSJcI4MZQGAQgdp7Io2fTD9TqPlnq6LEl4iAiuoY&usqp=CAU",
-      word: location.state + " 산장의 기억",
-    },
-    {
-      id: 8,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStoWlSfskVeITb1LyAuQCauH9MpeI79RZE5A&usqp=CAU",
-      word: location.state + " 오레오",
-    },
-  ];
-
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${search}`, { state: search });
+    navigate(`/search/${search}`, {
+      state: {
+        search: search,
+        game: game
+      }
+    });
   };
+
+  useEffect(() => {
+    getGameSearch()
+  }, [search]);
 
   return (
     <>
@@ -82,12 +56,12 @@ export default function SearchResult() {
         </Label>
       </Form>
       <ul>
-        {searchDummy.map((v) => {
+        {game.map((v) => {
           return (
             <SearchList key={v.id}>
               <Link to={`/detail`}>
                 <img src={v.image} alt="" />
-                <span>{v.word}</span>
+                <span>{v.name}</span>
               </Link>
             </SearchList>
           );
@@ -147,10 +121,11 @@ const SearchList = styled.li`
     gap: 1rem;
   }
   img {
-    width: 3.4rem;
-    height: 3.4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 0.5rem;
     object-fit: cover;
+    border: 1px solid black;
   }
   span {
     display: block;
