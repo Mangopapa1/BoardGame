@@ -23,6 +23,8 @@ public interface BoardGameRepository extends JpaRepository<BoardGame, Long> {
 
 
     List<BoardGame> findByDifficultyContaining(String difficulty); //난이도 검색
+    
+    Optional<BoardGame> findById(Long id); //id 검색
 
 
 

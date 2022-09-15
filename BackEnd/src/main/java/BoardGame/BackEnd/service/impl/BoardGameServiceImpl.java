@@ -46,5 +46,10 @@ public class BoardGameServiceImpl implements BoardGameService {
         return boardGameRepository.findByMaxPlayer(MaxPlayer).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
     }
 
+    @Override
+    public List<BoardGameDto> getId(Long id) {
+        return boardGameRepository.findById(id).stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
+    }
+
 
 }

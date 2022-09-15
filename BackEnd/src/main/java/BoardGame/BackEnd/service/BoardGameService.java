@@ -22,4 +22,6 @@ public interface BoardGameService {
 
     List<BoardGameDto> getMaxPlayer(int player);
 
+    List<BoardGameDto> getId(Long id);
+
 }
