@@ -7,78 +7,6 @@ import ListItem from "./CategoryItem";
 import CategoryResult from "./CategoryResult";
 
 export default function Category() {
-  const categoryDummy = [
-    {
-      id: 1,
-      category: "미스테리",
-    },
-    {
-      id: 2,
-      category: "전략",
-    },
-    {
-      id: 3,
-      category: "카드",
-    },
-    {
-      id: 4,
-      category: "범죄",
-    },
-    {
-      id: 5,
-      category: "타일",
-    },
-    {
-      id: 6,
-      category: "추리",
-    },
-  ];
-
-  const personDummy = [
-    {
-      id: 1,
-      person: "1인",
-    },
-    {
-      id: 2,
-      person: "2인",
-    },
-    {
-      id: 3,
-      person: "3인",
-    },
-    {
-      id: 4,
-      person: "4인",
-    },
-    {
-      id: 5,
-      person: "5인",
-    },
-    {
-      id: 6,
-      person: "6인 이상",
-    },
-  ];
-
-  const levelDummy = [
-    {
-      id: 1,
-      level: "입문자",
-    },
-    {
-      id: 2,
-      level: "초급자",
-    },
-    {
-      id: 3,
-      level: "중급자",
-    },
-    {
-      id: 4,
-      level: "상급자",
-    },
-  ];
 
   const [isSelect, setIsSelect] = useState(false);
   const [category, setCategory] = useState();
@@ -113,6 +41,7 @@ export default function Category() {
   }
 
   const categoryArr = []
+  const difficultyArr = []
 
   categoryGame.map((item, index) => {
     const type = item.type
@@ -120,16 +49,37 @@ export default function Category() {
       const typeSplit = type.split(',')
       typeSplit.forEach(type => categoryArr.push(type))
     } else categoryArr.push(item.type)
+
+    const difficulty = item.difficulty
+    difficultyArr.push(difficulty)
   })
 
-  const set = new Set(categoryArr)
+  const newSetCategory = new Set(categoryArr)
+  const newSetDifficulty = new Set(difficultyArr)
 
-  const setCategoryArr = [...set]
+  const setCategoryArr = [...newSetCategory]
+  const setDifficultyArr = [...newSetDifficulty]
+  const setPlayerArr = [1, 2, 3, 4, 5, 6]
 
-  const newArr = []
+  const difficultyItem = setDifficultyArr.splice(0, 1)
+  setDifficultyArr.splice(2, 0, difficultyItem[0])
+
+  const newCategoryArr = []
+  const newDifficultyArr = []
+  const newPlayerArr = []
 
   setCategoryArr.map((item, index) => {
-    return newArr.push({ type: item })
+    return newCategoryArr.push({ type: item })
+  })
+
+  setDifficultyArr.map((item, index) => {
+    return newDifficultyArr.push({ difficulty: item })
+  })
+
+  setPlayerArr.map((item, index) => {
+    if (item >= 6) {
+      newPlayerArr.push({ player: item + `인 이상` })
+    } else newPlayerArr.push({ player: item + `인` })
   })
 
   useEffect(() => {
@@ -140,7 +90,7 @@ export default function Category() {
     <>
       <CategoryList>
         <List className="category">
-          {newArr.map((item, index) => {
+          {newCategoryArr.map((item, index) => {
             return (
               <ListItem
                 key={index}
@@ -155,10 +105,10 @@ export default function Category() {
         </List>
         <Line />
         <List className="person">
-          {personDummy.map((item, index) => {
+          {newPlayerArr.map((item, index) => {
             return (
               <ListItem
-                key={item.id}
+                key={index}
                 item={item}
                 index={index}
                 handleClick={handleClick}
@@ -170,10 +120,10 @@ export default function Category() {
         </List>
         <Line />
         <List className="level">
-          {levelDummy.map((item, index) => {
+          {newDifficultyArr.map((item, index) => {
             return (
               <ListItem
-                key={item.id}
+                key={index}
                 item={item}
                 index={index}
                 handleClick={handleClick}

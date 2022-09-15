@@ -3,48 +3,48 @@ import { COLORS } from "../../constants";
 
 export default function PopularSearch() {
   const dummy = [
-    {
-      id: 1,
-      word: "미스테리",
-    },
-    {
-      id: 2,
-      word: "소설",
-    },
-    {
-      id: 3,
-      word: "카드",
-    },
-    {
-      id: 4,
-      word: "범죄",
-    },
-    {
-      id: 5,
-      word: "어린이",
-    },
-    {
-      id: 6,
-      word: "추리",
-    },
-    {
-      id: 7,
-      word: "건물",
-    },
-    {
-      id: 8,
-      word: "주사위",
-    },
-    {
-      id: 9,
-      word: "술",
-    },
+    // {
+    //   id: 1,
+    //   word: "오늘의 추천",
+    // },
+    // {
+    //   id: 2,
+    //   word: "소설",
+    // },
+    // {
+    //   id: 3,
+    //   word: "카드",
+    // },
+    // {
+    //   id: 4,
+    //   word: "범죄",
+    // },
+    // {
+    //   id: 5,
+    //   word: "어린이",
+    // },
+    // {
+    //   id: 6,
+    //   word: "추리",
+    // },
+    // {
+    //   id: 7,
+    //   word: "건물",
+    // },
+    // {
+    //   id: 8,
+    //   word: "주사위",
+    // },
+    // {
+    //   id: 9,
+    //   word: "술",
+    // },
   ];
 
   return (
     <>
       <WordList>
-        {dummy.map((v) => {
+        {/* {dummy.map((v) => {
           return (
             <Word key={v.id}>
               <p>
@@ -52,7 +52,7 @@ export default function PopularSearch() {
               </p>
             </Word>
           );
-        })}
+        })} */}
       </WordList>
     </>
   );
