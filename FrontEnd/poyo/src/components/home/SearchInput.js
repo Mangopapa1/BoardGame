@@ -11,6 +11,17 @@ export default function SearchInput() {
 
   const [search, setSearch] = useState("");
 
+  const [game, setGame] = useState()
+
+  const getGameSearch = async () => {
+    const res = await axios.get(`${API}/search/name/${search}`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    setGame(res.data)
+  }
+
   const onChangeSearch = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
@@ -18,37 +29,17 @@ export default function SearchInput() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${search}`, { state: search });
+    navigate(`/search/${search}`, {
+      state: {
+        search: search,
+        game: game
+      }
+    });
   };
 
-  // const [genre, setGenre] = useState('');
-
-  // const getGame = async () => {
-  //   const res = await axios.get(`${API}/games`,
-  //     {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       }
-  //     },
-  //   );
-  //   console.log(res)
-  // };
-
-  // const getSearch = async () => {
-  //   const res = await axios.get(`${API}/search/name/${search}`,
-  //     {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     }
-  //   );
-  //   console.log(res)
-  // };
-
-  // useEffect(() => {
-  //   getGame();
-  //   // getSearch();
-  // }, []);
+  useEffect(() => {
+    getGameSearch()
+  }, [search]);
 
   return (
     <>
