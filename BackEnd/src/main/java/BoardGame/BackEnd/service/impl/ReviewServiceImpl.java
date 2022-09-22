@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Log4j2
 @RequiredArgsConstructor
 @EnableJpaAuditing
+@Transactional
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
@@ -25,7 +26,6 @@ public class ReviewServiceImpl implements ReviewService {
 //    private final BCryptModule bCryptModule;
 
     @Override
-    @Transactional
     public ReviewDto insertReview(ReviewDto dto,Long boardGameId) throws Exception {
 
         if (dto.getReplyContent().equals("")) {
