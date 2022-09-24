@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class ReviewController {
     private final ReviewService service;
 
     @PostMapping("/review/{boardGameId}")
-    public ResponseEntity<ReviewDto> insertReview(@RequestBody ReviewDto dto,@PathVariable Long boardGameId) throws Exception {
+    public ResponseEntity<ReviewDto> insertReview(@RequestBody @Valid ReviewDto dto, @PathVariable Long boardGameId) throws Exception {
         return new ResponseEntity<>(service.insertReview(dto,boardGameId), HttpStatus.OK);
     }
 
@@ -31,6 +32,11 @@ public class ReviewController {
     @DeleteMapping("/review/{reviewId}")
     public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) throws Exception {
         return new ResponseEntity<>(service.deleteReview(reviewId), HttpStatus.OK);
+    }
+    @PutMapping("/review/{reviewId}")
+    public ResponseEntity<ReviewDto> updateReview(@PathVariable Long reviewId, @RequestBody @Valid ReviewDto dto) throws Exception{
+
+        return new ResponseEntity<>(service.updateReview(dto,reviewId),HttpStatus.OK);
     }
 
 }

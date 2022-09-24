@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Log4j2
 @RequiredArgsConstructor
 @EnableJpaAuditing
-@Transactional
+@Transactional(readOnly = true)
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
@@ -26,6 +26,7 @@ public class ReviewServiceImpl implements ReviewService {
 //    private final BCryptModule bCryptModule;
 
     @Override
+    @Transactional
     public ReviewDto insertReview(ReviewDto dto,Long boardGameId) throws Exception {
 
         if (dto.getReplyContent().equals("")) {
@@ -41,6 +42,19 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @Transactional
+    public ReviewDto updateReview(ReviewDto dto, Long boardGameId) throws Exception {
+
+        Review review = reviewRepository.save(dtoToEntity(dto, boardGameId));
+
+
+        return updateEntityToDto(review);
+
+    }
+
+
+    @Override
+    @Transactional
     public String deleteReview(Long reviewId) throws Exception {
         Optional<Review> entity = reviewRepository.findById(reviewId);
         if (!entity.isPresent()) {
@@ -61,5 +75,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         return entity.stream().map(data -> entityToDto(data)).collect(Collectors.toList());
     }
+
+
 
 }

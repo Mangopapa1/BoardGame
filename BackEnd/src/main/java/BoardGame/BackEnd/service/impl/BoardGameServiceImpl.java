@@ -1,6 +1,8 @@
 package BoardGame.BackEnd.service.impl;
 
 import BoardGame.BackEnd.dto.BoardGameDto;
+import BoardGame.BackEnd.dto.ReviewDto;
+import BoardGame.BackEnd.entity.BoardGame;
 import BoardGame.BackEnd.repository.BoardGameRepository;
 import BoardGame.BackEnd.service.BoardGameService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,6 @@ public class BoardGameServiceImpl implements BoardGameService {
     @Override
     public List<BoardGameDto> getAllGames() {
         return boardGameRepository.findAll().stream().map(BoardGameDto::fromEntity).collect(Collectors.toList());
-
     }
     @Override
     public List<BoardGameDto> getTypeGames(String type) {

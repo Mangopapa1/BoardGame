@@ -1,8 +1,12 @@
 package BoardGame.BackEnd.dto;
 
 import BoardGame.BackEnd.entity.BoardGame;
+import BoardGame.BackEnd.entity.Review;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Getter
@@ -17,8 +21,10 @@ public class BoardGameDto {
     private String difficulty;
     private String description;
     private String image;
+    private List<Review> reviews;
 
     public static BoardGameDto fromEntity(BoardGame boardGame){
+
         return BoardGameDto.builder()
                 .id(boardGame.getId())
                 .name(boardGame.getName())
@@ -29,6 +35,8 @@ public class BoardGameDto {
                 .difficulty(boardGame.getDifficulty())
                 .description(boardGame.getDescription())
                 .image(boardGame.getImage())
+
+
                 .build();
     }
 

@@ -4,11 +4,12 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Getter
 public class ReviewDto {
     private Long reviewId;
     private String reviewPw;
