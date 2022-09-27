@@ -4,11 +4,13 @@ package BoardGame.BackEnd.controller;
 import BoardGame.BackEnd.dto.ReviewDto;
 import BoardGame.BackEnd.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,6 +33,11 @@ public class ReviewController {
     @DeleteMapping("/review/{reviewId}")
     public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) throws Exception {
         return new ResponseEntity<>(service.deleteReview(reviewId), HttpStatus.OK);
+    }
+
+    @PutMapping("/review/{reviewId}")
+    public ResponseEntity<ReviewDto> updateReview(@PathVariable Long reviewId, @RequestBody @Valid ReviewDto dto) throws Exception{
+        return new ResponseEntity<>(service.updateReview(dto,reviewId),HttpStatus.OK);
     }
 
 }

@@ -6,18 +6,11 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
-@SequenceGenerator(
-        name="REVIEW_SEQ_GEN",
-        sequenceName="REVIEW_SEQ",
-        initialValue=1,
-        allocationSize=1
-)
 @Data
 @Builder
 @AllArgsConstructor
@@ -28,8 +21,13 @@ import java.time.LocalDateTime;
 public class Review {
     @Id
     @GeneratedValue(
-            strategy=GenerationType.AUTO,
+            strategy=GenerationType.SEQUENCE,
             generator="REVIEW_SEQ_GEN"
+    )
+    @SequenceGenerator(
+            name="REVIEW_SEQ_GEN",
+            sequenceName="REVIEW_SEQ",
+            allocationSize=1
     )
     @Column(name = "review_id")
     private Long reviewId;
@@ -60,5 +58,11 @@ public class Review {
     @LastModifiedDate
     @Column(name = "modified_date")
     private LocalDateTime modifiedDate;
+
+    public void updateReview(String replyContent, Long reviewPoints){
+        this.replyContent = replyContent;
+        this.reviewPoints = reviewPoints;
+    }
+
 
 }
