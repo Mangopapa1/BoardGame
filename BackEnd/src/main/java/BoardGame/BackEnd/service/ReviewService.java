@@ -20,6 +20,8 @@ public interface ReviewService {
 
     List<ReviewDto> selectReviewList(Long boardGameId) throws Exception;
 
+    ReviewDto updateReview(ReviewDto dto, Long boardGameId) throws Exception;
+
     default Review dtoToEntity(ReviewDto dto,Long boardGameId) {
         BoardGame getBoardGameId = BoardGame.builder()
                 .id(boardGameId)

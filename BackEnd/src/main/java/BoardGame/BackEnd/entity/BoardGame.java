@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "board_game")
@@ -44,7 +45,11 @@ public class BoardGame {
     private String description;
 
     @OneToMany(mappedBy = "boardGame")
-    private List<Review> reviews;
+    private Set<Review> reviews = new LinkedHashSet<>();
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
 
 
     public BoardGame() {
